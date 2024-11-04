@@ -15,7 +15,7 @@
         : "py-6 bg-transparent border-transparent"
 )}>
     <h1 class="font-medium">
-        <b class="font-bold poppins">Guhaprasaanth</b> Nandagopal
+        <b class="font-bold poppins">Carmi Wilna</b> Tongson
     </h1>
     <div class="sm:flex items-center ml-auto pr-4 gap-4 hidden">
         {#each tabs as tab}
