@@ -1,7 +1,30 @@
-<script>import "../app.css";</script>
-<svelte:head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin= "anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-</svelte:head>
-<slot></slot>
+<script>
+    import "../app.css";
+    import Header from '../components/Header.svelte';
+    import Footer from '../components/Footer.svelte';
+
+    let y;
+    let innerHeight;
+    let innerWidth;
+
+    function goTop(){
+        document.body.scrollIntoView();
+    }
+</script>
+
+<div class="relative flex flex-col max-w-[1440px] mx-auto w-full text-sm sm:text-base min-h-screen top-4">
+    <div class={"fixed bottom-0 w-full duration-200 flex px-10 z-[10]"+
+        (y > 0 
+            ? "opacity-100 pointer-events-auto" 
+            : "opacity-0 pointer-events-none")
+    }>
+        <button on:click={goTop} class="ml-auto rounded-full aspect-square bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer">
+            <i class="fa-solid fa-arrow-up grid place-items-center aspect-square" />
+        </button>
+    </div>
+    <Header />
+    <slot />
+    <Footer />
+</div>
+
+<svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />
